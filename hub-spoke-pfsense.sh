@@ -124,7 +124,7 @@ az network route-table create -n $spoke3_vnet_name -g $rg -l $location -o none
 az network route-table route create -g $rg -n to-default --address-prefix $default --next-hop-type virtualappliance --route-table-name $spoke3_vnet_name --next-hop-ip-address $hub1_fw_lan_private_ip -o none
 az network vnet subnet update -g $rg -n $spoke3_vm_subnet_name --vnet-name $spoke3_vnet_name --route-table $spoke3_vnet_name -o none
 
-#scp -o StrictHostKeyChecking=no ~/.ssh/* root@$hub1_fw_public_ip:/root/.ssh/
+#scp -o StrictHostKeyChecking=no ~/.ssh/id_rsa root@$hub1_fw_public_ip:/root/.ssh/
 
 # copy config to pfsense
 echo -e "\e[1;36mApplying config.xml to $hub1_vnet_name-fw....\e[0m"
